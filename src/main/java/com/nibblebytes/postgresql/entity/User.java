@@ -1,5 +1,7 @@
 package com.nibblebytes.postgresql.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,16 +17,22 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@ApiModel(value = "User object value",description = "User object description")
 public class User implements Serializable {
 
     @Id
     @SequenceGenerator(name = "seq_user")
     @GeneratedValue(generator = "seq_user", strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
+
+    @ApiModelProperty(value = "User's unique id")
     private Long id;
 
+    @ApiModelProperty(value = "User Name")
     @Column(name = "name")
     private String name;
+
+    @ApiModelProperty(value = "User Surname")
     @Column(name = "surname")
     private String surname;
 
